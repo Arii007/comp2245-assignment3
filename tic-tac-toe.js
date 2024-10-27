@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // New Game button that forces a full page reload
   document.getElementById("new-game").onclick = function() {
     console.log("New Game button clicked");
-    window.location.href = window.location.href; // Forces the page to reload
+    location.reload(); // Directly reloads the page
   };
 });
 
