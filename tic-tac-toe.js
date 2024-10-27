@@ -25,6 +25,17 @@ document.addEventListener("DOMContentLoaded", () => {
     square.addEventListener("mouseover", () => square.classList.add("hover"));
     square.addEventListener("mouseout", () => square.classList.remove("hover"));
   });
+
+  document.getElementById("new-game").addEventListener("click", () => {
+    console.log("New Game button clicked");
+    squares.forEach(square => {
+      square.textContent = "";
+      square.classList.remove("X", "O");
+    });
+    document.getElementById("status").textContent = "Move your mouse over a square and click to play an X or an O.";
+    document.getElementById("status").classList.remove("you-won");
+    currentPlayer = "X";
+  });
 });
 
 function checkWinner() {
@@ -38,21 +49,9 @@ function checkWinner() {
   for (const combo of winningCombinations) {
     const [a, b, c] = combo;
     if (squares[a].textContent && squares[a].textContent === squares[b].textContent && squares[a].textContent === squares[c].textContent) {
-      document.getElementById("status").textContent = `Congratulations! ${squares[a].textContent} is the Winner!`;
+      document.getElementById("status").textContent = `🎉 Congratulations! ${squares[a].textContent} is the Winner! 🎉`;
       document.getElementById("status").classList.add("you-won");
       return;
     }
   }
 }
-
-document.getElementById("new-game").addEventListener("click", () => {
-  console.log("New Game button clicked");
-  const squares = document.querySelectorAll("#board div");
-  squares.forEach(square => {
-    square.textContent = "";
-    square.classList.remove("X", "O");
-  });
-  document.getElementById("status").textContent = "Move your mouse over a square and click to play an X or an O.";
-  document.getElementById("status").classList.remove("you-won");
-  currentPlayer = "X"; 
-});
