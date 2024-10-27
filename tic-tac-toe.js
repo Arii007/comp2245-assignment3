@@ -2,27 +2,29 @@ console.log("tic-tac-toe.js is loaded");
 
 document.addEventListener("DOMContentLoaded", () => {
   console.log("JavaScript is running, DOM is loaded.");
+
   const squares = document.querySelectorAll("#board div");
-  squares.forEach(square => square.classList.add("square"));
-});
-
-let currentPlayer = "X";
-
-document.querySelectorAll("#board div").forEach(square => {
-  square.addEventListener("click", () => {
-    if (square.textContent === "") {  
-      console.log(`Square clicked by ${currentPlayer}`);
-      square.textContent = currentPlayer;
-      square.classList.add(currentPlayer);
-      checkWinner(); 
-      currentPlayer = currentPlayer === "X" ? "O" : "X"; 
-    }
+  squares.forEach(square => {
+    square.classList.add("square");
+    console.log("Added square class");
   });
-});
 
-document.querySelectorAll("#board div").forEach(square => {
-  square.addEventListener("mouseover", () => square.classList.add("hover"));
-  square.addEventListener("mouseout", () => square.classList.remove("hover"));
+  let currentPlayer = "X";
+
+  squares.forEach(square => {
+    square.addEventListener("click", () => {
+      if (square.textContent === "") {  
+        console.log(`Square clicked by ${currentPlayer}`);
+        square.textContent = currentPlayer;
+        square.classList.add(currentPlayer);
+        checkWinner(); 
+        currentPlayer = currentPlayer === "X" ? "O" : "X"; 
+      }
+    });
+
+    square.addEventListener("mouseover", () => square.classList.add("hover"));
+    square.addEventListener("mouseout", () => square.classList.remove("hover"));
+  });
 });
 
 function checkWinner() {
@@ -44,7 +46,7 @@ function checkWinner() {
 }
 
 document.getElementById("new-game").addEventListener("click", () => {
-  console.log("New Game started.");
+  console.log("New Game button clicked");
   const squares = document.querySelectorAll("#board div");
   squares.forEach(square => {
     square.textContent = "";
