@@ -26,11 +26,14 @@ document.addEventListener("DOMContentLoaded", () => {
     square.addEventListener("mouseout", () => square.classList.remove("hover"));
   });
 
-  // New Game button that forces a full page reload
-  document.getElementById("new-game").onclick = function() {
-    console.log("New Game button clicked");
-    location.reload(); // Directly reloads the page
-  };
+  // Selecting "New Game" button by class name
+  const newGameButton = document.querySelector(".btn");
+  if (newGameButton) {
+    newGameButton.addEventListener("click", () => {
+      console.log("New Game button clicked");
+      location.reload(); // Directly reloads the page
+    });
+  }
 });
 
 function checkWinner() {
