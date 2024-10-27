@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     squares.forEach(square => square.classList.add("square"));
   });
   
-
+ 
   let currentPlayer = "X";
   
   document.querySelectorAll("#board div").forEach(square => {
@@ -42,4 +42,16 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   }
+  
+  
+  document.getElementById("new-game").addEventListener("click", () => {
+    const squares = document.querySelectorAll("#board div");
+    squares.forEach(square => {
+      square.textContent = "";
+      square.classList.remove("X", "O");
+    });
+    document.getElementById("status").textContent = "Move your mouse over a square and click to play an X or an O.";
+    document.getElementById("status").classList.remove("you-won");
+    currentPlayer = "X"; 
+  });
   
