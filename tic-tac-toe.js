@@ -26,15 +26,10 @@ document.addEventListener("DOMContentLoaded", () => {
     square.addEventListener("mouseout", () => square.classList.remove("hover"));
   });
 
+  // New Game button that refreshes the entire page
   document.getElementById("new-game").addEventListener("click", () => {
     console.log("New Game button clicked");
-    squares.forEach(square => {
-      square.textContent = "";
-      square.classList.remove("X", "O");
-    });
-    document.getElementById("status").textContent = "Move your mouse over a square and click to play an X or an O.";
-    document.getElementById("status").classList.remove("you-won");
-    currentPlayer = "X";
+    location.reload(); // Reloads the entire page
   });
 });
 
